@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.entity.EventEntity;
 import com.example.model.Event;
 import com.example.service.EventService;
 
@@ -19,24 +18,10 @@ public class EventController {
 
 	@Autowired
 	EventService eventService;
-//
-//	@RequestMapping(value = { "/" })
-//	public String getEvent(@RequestParam("guid") String guid, @RequestParam("uid") int uid) {
-
-	@RequestMapping(value = { "/events" }, method = RequestMethod.GET)
-	public List<EventEntity> getEvents() {
-		List<EventEntity> eventList = eventService.getEvents();
-
-		return eventList;
-
-	}
 
 	@RequestMapping(value = { "/event/{uid}" }, method = RequestMethod.GET)
 	public Event getEvent(@PathVariable String uid, @RequestParam(value = "guid", required = false) String guid,
 			@RequestParam(value = "folder_id", required = false) Integer folderId) {
-		System.out.println("uid:" + uid);
-		System.out.println("guid:" + guid);
-		System.out.println("folder_id:" + folderId);
 		Event eventList = eventService.getEvent(uid, guid, folderId);
 		return eventList;
 	}
@@ -45,10 +30,6 @@ public class EventController {
 	public List<Event> getEvents(@RequestParam(value = "uids", required = false) String uids,
 			@RequestParam(value = "guid", required = false) String guid,
 			@RequestParam(value = "folderids", required = false) String folderIds) {
-
-		System.out.println("uids:" + uids);
-		System.out.println("guid:" + guid);
-		System.out.println("folderIds:" + folderIds);
 
 		List<String> uidList = new ArrayList<>();
 		if (uids != null) {

@@ -7,8 +7,6 @@ import com.example.model.Event;
 
 
 public interface EventService {
-
-	List<EventEntity> getEvents();
 	
 	List<Event> getEvents(String guid,List<String> uidList, List<Integer> folderIdList);
 	

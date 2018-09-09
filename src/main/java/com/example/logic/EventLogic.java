@@ -8,8 +8,6 @@ public interface EventLogic {
 
 	Event createEvent(String guid, String uid);
 	
-	List<Event> getEvents();
-	
 	List<Event> getEvents(String guid,List<String> uidList, List<Integer> folderIdList);
 	
 	Event getEvent(String guid ,String uid , Integer folderId);

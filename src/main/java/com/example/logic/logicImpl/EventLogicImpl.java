@@ -18,11 +18,6 @@ public class EventLogicImpl implements EventLogic {
 	EventDao eventDao;
 
 	@Override
-	public List<Event> getEvents() {
-		return null;
-	}
-
-	@Override
 	public Event createEvent(String guid, String uid) {
 		// TODO 自動生成されたメソッド・スタブ
 		Event event = new Event();
@@ -30,8 +25,6 @@ public class EventLogicImpl implements EventLogic {
 		event.setUid(uid);
 		return event;
 	}
-
-
 
 	@Override
 	public List<Event> getEvents(String guid, List<String> uidList, List<Integer> folderIdList) {
@@ -51,7 +44,6 @@ public class EventLogicImpl implements EventLogic {
 	public Event getEvent(String guid, String uid, Integer folderId) {
 		// TODO 自動生成されたメソッド・スタブ
 		EventEntity eventEntity = eventDao.selectByUid(guid, uid, folderId);
-		System.out.println("eventEntity:"+eventEntity);
 		Event event = new Event();
 		event.toEvent(eventEntity);
 		return event;
