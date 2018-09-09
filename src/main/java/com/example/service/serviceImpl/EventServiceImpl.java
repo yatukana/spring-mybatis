@@ -17,15 +17,6 @@ public class EventServiceImpl implements EventService {
 	@Autowired
 	EventLogic eventLogic;
 
-	@Autowired
-	EventDao eventDao;
-	
-	@Override
-	public List<EventEntity> getEvents() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
-
 	@Override
 	public List<Event> getEvents(String guid, List<String> uidList, List<Integer> folderIdList) {
 		// TODO 自動生成されたメソッド・スタブ
@@ -34,12 +25,7 @@ public class EventServiceImpl implements EventService {
 
 	@Override
 	public Event getEvent(String uid, String guid, Integer folderId) {
-		System.out.println("uid:"+uid);
-		System.out.println("guid:"+guid);
-		System.out.println("folder_id:"+folderId);
-		Event event = eventLogic.getEvent(guid, uid, folderId);
-		System.out.println("event"+event);
-		return  event;
+		return eventLogic.getEvent(guid, uid, folderId);
 	}
 
 }
